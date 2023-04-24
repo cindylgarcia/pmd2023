@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\Functional\LinkFieldUITest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldUITest.php" tests="1" assertions="520" errors="0" warnings="0" failures="0" skipped="0" time="100.141817">
+    <testcase name="testFieldUI" class="Drupal\Tests\link\Functional\LinkFieldUITest" classname="Drupal.Tests.link.Functional.LinkFieldUITest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldUITest.php" line="75" assertions="520" time="100.141817"/>
+  </testsuite>
+</testsuites>

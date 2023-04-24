@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for february 2 module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_library_info_build().
+ */
+function february_2_library_info_build() {
+
+}
+
+function february_2_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'user_login_form') {
+    $form['name']['#attributes']['placeholder'] = t('Username');
+    $form['pass']['#attributes']['placeholder'] = t('Password');
+  }
+}
+
+ /**
+ * Implements hook_block_view_alter().
+ */
+function february_2_block_view_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+
+}

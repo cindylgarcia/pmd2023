@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\FunctionalJavascript\LinkFieldFormStatesTest" file="/var/www/html/web/core/modules/link/tests/src/FunctionalJavascript/LinkFieldFormStatesTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="2" time="31.359049">
+    <testsuite name="Drupal\Tests\link\FunctionalJavascript\LinkFieldFormStatesTest::testLinkFieldFormStates" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="2" time="31.359049">
+      <testcase name="testLinkFieldFormStates with data set &quot;Fill uri, keep title empty&quot;" class="Drupal\Tests\link\FunctionalJavascript\LinkFieldFormStatesTest" classname="Drupal.Tests.link.FunctionalJavascript.LinkFieldFormStatesTest" file="/var/www/html/web/core/modules/link/tests/src/FunctionalJavascript/LinkFieldFormStatesTest.php" line="44" assertions="1" time="15.190011">
+        <skipped/>
+      </testcase>
+      <testcase name="testLinkFieldFormStates with data set &quot;Fill title, keep uri empty&quot;" class="Drupal\Tests\link\FunctionalJavascript\LinkFieldFormStatesTest" classname="Drupal.Tests.link.FunctionalJavascript.LinkFieldFormStatesTest" file="/var/www/html/web/core/modules/link/tests/src/FunctionalJavascript/LinkFieldFormStatesTest.php" line="44" assertions="1" time="16.169038">
+        <skipped/>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

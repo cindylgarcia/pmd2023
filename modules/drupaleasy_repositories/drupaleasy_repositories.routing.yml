@@ -1,0 +1,15 @@
+drupaleasy_repositories.settings:
+  path: '/admin/config/services/repositories'
+  defaults:
+    _title: 'DrupalEasy repositories settings'
+    _form: 'Drupal\drupaleasy_repositories\Form\SettingsForm'
+  requirements:
+    _permission: 'configure drupaleasy repositories'
+
+drupaleasy_repositories.update_repositories:
+  path: '/admin/config/services/repositories-update'
+  defaults:
+    _title: 'DrupalEasy repositories - update'
+    _form: 'Drupal\drupaleasy_repositories\Form\UpdateRepositoriesForm'
+  requirements:
+    _permission: 'configure drupaleasy repositories'

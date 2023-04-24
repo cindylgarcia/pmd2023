@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\Kernel\LinkItemTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/LinkItemTest.php" tests="1" assertions="34" errors="0" warnings="0" failures="0" skipped="0" time="1.497561">
+    <testcase name="testLinkItem" class="Drupal\Tests\link\Kernel\LinkItemTest" classname="Drupal.Tests.link.Kernel.LinkItemTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/LinkItemTest.php" line="74" assertions="34" time="1.497561"/>
+  </testsuite>
+</testsuites>

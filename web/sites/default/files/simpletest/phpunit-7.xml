@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\Kernel\LinkItemSerializationTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/LinkItemSerializationTest.php" tests="2" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="2.861781">
+    <testcase name="testLinkSerialization" class="Drupal\Tests\link\Kernel\LinkItemSerializationTest" classname="Drupal.Tests.link.Kernel.LinkItemSerializationTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/LinkItemSerializationTest.php" line="58" assertions="8" time="1.450591"/>
+    <testcase name="testLinkDeserialization" class="Drupal\Tests\link\Kernel\LinkItemSerializationTest" classname="Drupal.Tests.link.Kernel.LinkItemSerializationTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/LinkItemSerializationTest.php" line="86" assertions="9" time="1.411190"/>
+  </testsuite>
+</testsuites>

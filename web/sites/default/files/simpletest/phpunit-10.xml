@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\Kernel\Plugin\migrate\field\d7\LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/Plugin/migrate/field/d7/LinkFieldTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.380971">
+    <testcase name="testAlterFieldInstanceMigration" class="Drupal\Tests\link\Kernel\Plugin\migrate\field\d7\LinkFieldTest" classname="Drupal.Tests.link.Kernel.Plugin.migrate.field.d7.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/Plugin/migrate/field/d7/LinkFieldTest.php" line="56" assertions="1" time="0.380971"/>
+  </testsuite>
+</testsuites>

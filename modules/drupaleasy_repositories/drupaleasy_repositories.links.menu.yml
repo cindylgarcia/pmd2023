@@ -1,0 +1,6 @@
+drupaleasy_repositories.settings:
+  title: DrupalEasy repositories settings
+  description: DrupalEasy repositories settings
+  parent: system.admin_config_services
+  route_name: drupaleasy_repositories.settings
+  weight: 10

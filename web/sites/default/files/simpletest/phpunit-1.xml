@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\drupaleasy_repositories\Functional\AddYmlRepoTest" file="/var/www/html/web/modules/custom/drupaleasy_repositories/tests/src/Functional/AddYmlRepoTest.php" tests="1" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="5.083333">
+    <testcase name="testSomething" class="Drupal\Tests\drupaleasy_repositories\Functional\AddYmlRepoTest" classname="Drupal.Tests.drupaleasy_repositories.Functional.AddYmlRepoTest" file="/var/www/html/web/modules/custom/drupaleasy_repositories/tests/src/Functional/AddYmlRepoTest.php" line="35" assertions="8" time="5.083333"/>
+  </testsuite>
+</testsuites>

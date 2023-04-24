@@ -1,0 +1,79 @@
+uuid: a75c37be-0c43-4dd5-bbf0-deaeea0d6f48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.repository.field_description
+    - field.field.node.repository.field_hash
+    - field.field.node.repository.field_machine_name
+    - field.field.node.repository.field_number_of_issues
+    - field.field.node.repository.field_source
+    - field.field.node.repository.field_url
+    - node.type.repository
+  module:
+    - link
+    - text
+    - user
+id: node.repository.default
+targetEntityType: node
+bundle: repository
+mode: default
+content:
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_hash:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_machine_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_number_of_issues:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_source:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

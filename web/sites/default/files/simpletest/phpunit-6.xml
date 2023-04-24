@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\Functional\Views\LinkViewsTokensTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/Views/LinkViewsTokensTest.php" tests="1" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="10.492053">
+    <testcase name="testLinkViewsTokens" class="Drupal\Tests\link\Functional\Views\LinkViewsTokensTest" classname="Drupal.Tests.link.Functional.Views.LinkViewsTokensTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/Views/LinkViewsTokensTest.php" line="70" assertions="7" time="10.492053"/>
+  </testsuite>
+</testsuites>

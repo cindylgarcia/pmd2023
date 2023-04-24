@@ -1,0 +1,13 @@
+name: DrupalEasy Repositories
+type: module
+description: Create repository nodes from remote Git repository metadata.
+package: DrupalEasy
+core_version_requirement: ^9 || ^10
+dependencies:
+    - drupal:link
+    - drupal:path
+    - drupal:text
+    - drupal:field
+    - drupal:node
+    - drupal:menu_ui
+    - key:key

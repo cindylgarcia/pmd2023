@@ -1,0 +1,130 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for DrupalEasy Repositories module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\user\Entity\User;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function drupaleasy_repositories_form_user_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if (!empty($form['field_repository_url']['widget'])) {
+    foreach (Element::children($form['field_repository_url']['widget']) as $el_index) {
+      $form['field_repository_url']['widget'][$el_index]['#process'][] = '_drupaleasy_repositories_url_help_text';
+    }
+  }
+  $form['#validate'][] = '_drupaleasy_repositories_user_form_validate';
+  $form['actions']['submit']['#submit'][] = '_drupaleasy_repositories_user_form_submit';
+}
+
+/**
+ * Custom function to populate Repository URL descriptions.
+ *
+ * @param array<string, mixed> $element
+ *   A render element.
+ * @param Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ * @param array<string, mixed> $form
+ *   The form array.
+ *
+ * @return array<string, mixed>
+ *   A render element.
+ */
+function _drupaleasy_repositories_url_help_text(array &$element, FormStateInterface &$form_state, array &$form): array {
+  /** @var \Drupal\drupaleasy_repositories\DrupaleasyRepositoriesService $repository_service */
+  $repository_service = \Drupal::service('drupaleasy_repositories.service');
+  $help_text = $repository_service->getValidatorHelpText();
+  if ($help_text) {
+    $element['uri']['#description'] = t('Valid URLs include: %help_text', ['%help_text' => $help_text]);
+  }
+  else {
+    $element['uri']['#description'] = t('No repository plugins are enabled. Contact site administrator.');
+  }
+  $element['uri']['#description_display'] = 'before';
+  return $element;
+}
+
+/**
+ * Custom validation handler for user profile form.
+ *
+ * @param array<string, mixed> $form
+ *   The form array.
+ * @param Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ */
+function _drupaleasy_repositories_user_form_validate(array $form, FormStateInterface &$form_state): void {
+  /** @var \Drupal\drupaleasy_repositories\DrupaleasyRepositoriesService $repository_service */
+  $repository_service = \Drupal::service('drupaleasy_repositories.service');
+  // For some reason, $form_state->getValue('uid') isn't a thing.
+  $username = $form_state->getValue('name');
+  $user = user_load_by_name($username);
+  // If the user doesn't exist, then use the anonymous user ID (0).
+  $uid = is_object($user) ? $user->id() : 0;
+  $error = $repository_service->validateRepositoryUrls($form_state->getValue('field_repository_url'), $uid);
+
+  if ($error) {
+    $form_state->setErrorByName(
+      'field_repository_url',
+      $error,
+    );
+  }
+}
+
+/**
+ * Custom submit handler for user profile form.
+ *
+ * @param array $form
+ *   The form.
+ * @param Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ */
+function _drupaleasy_repositories_user_form_submit(array $form, FormStateInterface &$form_state): void {
+  /** @var \Drupal\drupaleasy_repositories\DrupaleasyRepositoriesService $repository_service */
+  $repository_service = \Drupal::service('drupaleasy_repositories.service');
+  $account = User::load($form_state->getValue('uid'));
+  $repository_service->updateRepositories($account);
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function drupaleasy_repositories_user_login(UserInterface $account): void {
+  /** @var \Drupal\drupaleasy_repositories\DrupaleasyRepositoriesService $der */
+  $der = \Drupal::service('drupaleasy_repositories.service');
+  /** @var \Drupal\Core\Messenger\MessengerInterface $messenger */
+  $messenger = \Drupal::service('messenger');
+
+  if ($der->updateRepositories($account)) {
+    $messenger->addStatus(t('Repository nodes updated.'));
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function drupaleasy_repositories_cron(): void {
+  // Update repository nodes once per day, only between 1am and 2am UTC.
+  // Assume cron runs every hour.
+  // Gets the current GMT hour.
+  $hour = (int) (time() / 3600) % 24;
+  // If ($hour == 1) {.
+  /** @var \Drupal\Core\Entity\EntityStorageInterface $user_storage */
+  $user_storage = \Drupal::service('entity_type.manager')->getStorage('user');
+  $query = $user_storage->getQuery();
+  $query->condition('status', '1');
+  $users = $query->accessCheck(FALSE)->execute();
+
+  // Create a Queue API item for each user.
+  foreach ($users as $uid => $user) {
+    $queue = \Drupal::queue('drupaleasy_repositories_repository_node_updater');
+    $queue->createItem(['uid' => $uid]);
+  }
+}
+
+// }

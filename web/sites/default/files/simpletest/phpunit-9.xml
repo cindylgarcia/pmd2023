@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\Kernel\LinkItemUrlValidationTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/LinkItemUrlValidationTest.php" tests="1" assertions="84" errors="0" warnings="0" failures="0" skipped="0" time="0.855389">
+    <testcase name="testExternalLinkValidation" class="Drupal\Tests\link\Kernel\LinkItemUrlValidationTest" classname="Drupal.Tests.link.Kernel.LinkItemUrlValidationTest" file="/var/www/html/web/core/modules/link/tests/src/Kernel/LinkItemUrlValidationTest.php" line="22" assertions="84" time="0.855389"/>
+  </testsuite>
+</testsuites>

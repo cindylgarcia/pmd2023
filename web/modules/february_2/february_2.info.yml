@@ -1,0 +1,5 @@
+name: february 2
+type: module
+description: this is a module
+package: Custom
+core_version_requirement: ^9 || ^10

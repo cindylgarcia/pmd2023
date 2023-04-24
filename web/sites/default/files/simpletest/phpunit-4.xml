@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Drupal\Tests\link\Functional\LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" tests="7" assertions="353" errors="0" warnings="0" failures="0" skipped="0" time="191.221682">
+    <testcase name="testURLValidation" class="Drupal\Tests\link\Functional\LinkFieldTest" classname="Drupal.Tests.link.Functional.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" line="74" assertions="216" time="57.039818"/>
+    <testcase name="testLinkTitle" class="Drupal\Tests\link\Functional\LinkFieldTest" classname="Drupal.Tests.link.Functional.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" line="258" assertions="36" time="25.165671"/>
+    <testcase name="testLinkFormatter" class="Drupal\Tests\link\Functional\LinkFieldTest" classname="Drupal.Tests.link.Functional.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" line="383" assertions="43" time="23.171555"/>
+    <testcase name="testLinkSeparateFormatter" class="Drupal\Tests\link\Functional\LinkFieldTest" classname="Drupal.Tests.link.Functional.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" line="540" assertions="27" time="21.657013"/>
+    <testcase name="testLinkTypeOnLinkWidget" class="Drupal\Tests\link\Functional\LinkFieldTest" classname="Drupal.Tests.link.Functional.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" line="667" assertions="8" time="20.369423"/>
+    <testcase name="testEditNonNodeEntityLink" class="Drupal\Tests\link\Functional\LinkFieldTest" classname="Drupal.Tests.link.Functional.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" line="705" assertions="10" time="21.251593"/>
+    <testcase name="testNoLinkUri" class="Drupal\Tests\link\Functional\LinkFieldTest" classname="Drupal.Tests.link.Functional.LinkFieldTest" file="/var/www/html/web/core/modules/link/tests/src/Functional/LinkFieldTest.php" line="767" assertions="13" time="22.566609"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,23 @@
+uuid: 09c7fec8-03da-4c7f-9bf2-b008ac64ed4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_number_of_issues
+    - node.type.repository
+id: node.repository.field_number_of_issues
+field_name: field_number_of_issues
+entity_type: node
+bundle: repository
+label: 'Number of open issues'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
