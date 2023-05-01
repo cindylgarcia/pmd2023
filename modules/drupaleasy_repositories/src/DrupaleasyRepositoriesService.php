@@ -2,11 +2,14 @@
 
 namespace Drupal\drupaleasy_repositories;
 
+use Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher;
 use Drupal\Component\Plugin\PluginManagerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\drupaleasy_repositories\Event\RepoUpdatedEvent;
+use Drupal\node\NodeInterface;
 
 /**
  * Service description.
@@ -45,6 +48,13 @@ class DrupaleasyRepositoriesService {
   protected bool $dryRun = FALSE;
 
   /**
+   * The event dispatcher service.
+   *
+   * @var \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher
+   */
+  protected ContainerAwareEventDispatcher $eventDispatcher;
+
+  /**
    * Constructs a DrupaleasyRepositories object.
    *
    * @param \Drupal\Component\Plugin\PluginManagerInterface $plugin_manager_drupaleasy_repositories
@@ -55,12 +65,15 @@ class DrupaleasyRepositoriesService {
    *   The entity type manager.
    * @param bool $dry_run
    *   The dry run parameter that specifies whether or not to save node changes.
+   * @param \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher $event_dispatcher
+   *   The event dispatcher service.
    */
-  public function __construct(PluginManagerInterface $plugin_manager_drupaleasy_repositories, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, bool $dry_run) {
+  public function __construct(PluginManagerInterface $plugin_manager_drupaleasy_repositories, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, bool $dry_run, ContainerAwareEventDispatcher $event_dispatcher) {
     $this->pluginManagerDrupaleasyRepositories = $plugin_manager_drupaleasy_repositories;
     $this->configFactory = $config_factory;
     $this->entityTypeManager = $entity_type_manager;
     $this->dryRun = $dry_run;
+    $this->eventDispatcher = $event_dispatcher;
   }
 
   /**
@@ -251,7 +264,7 @@ class DrupaleasyRepositoriesService {
           $node->set('field_hash', $hash);
           if (!$this->dryRun) {
             $node->save();
-            // $this->repoUpdated($node, 'updated');
+            $this->repoUpdated($node, 'updated');
           }
         }
       }
@@ -271,7 +284,7 @@ class DrupaleasyRepositoriesService {
         ]);
         if (!$this->dryRun) {
           $node->save();
-          // $this->repoUpdated($node, 'created');
+          $this->repoUpdated($node, 'created');
         }
       }
     }
@@ -310,7 +323,7 @@ class DrupaleasyRepositoriesService {
       foreach ($nodes as $node) {
         if (!$this->dryRun) {
           $node->delete();
-          // $this->repoUpdated($node, 'deleted');
+          $this->repoUpdated($node, 'deleted');
         }
       }
     }
@@ -328,7 +341,7 @@ class DrupaleasyRepositoriesService {
    * @return bool
    *   Return true if the given repository is unique.
    *
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException.
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    */
   protected function isUnique(array $repo_info, int $uid): bool {
@@ -345,6 +358,19 @@ class DrupaleasyRepositoriesService {
       ->execute();
 
     return !count($results);
+  }
+
+  /**
+   * Dispatch event whenever a repository node is changed.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   The node that was changed.
+   * @param string $action
+   *   The action that was performed.
+   */
+  protected function repoUpdated(NodeInterface $node, string $action): void {
+    $event = new RepoUpdatedEvent($node, $action);
+    $this->eventDispatcher->dispatch($event, RepoUpdatedEvent::REPO_UPDATED);
   }
 
 }

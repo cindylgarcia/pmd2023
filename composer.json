@@ -13,7 +13,6 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-
         {
             "type": "path",
             "url": "./modules/*"
@@ -25,9 +24,11 @@
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-project-message": "^10.0",
         "drupal/core-recommended": "^10.0",
-        "drupal/devel": "^5.1",
+        "drupal/key": "^1.17",
+        "drupaleasy/drupaleasy_notify": "^1.0",
         "drupaleasy/drupaleasy_repositories": "^1.0",
-        "drush/drush": "^11.4"
+        "drush/drush": "^11.4",
+        "m4tthumphrey/php-gitlab-api": "^11.9"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -104,6 +105,7 @@
     },
     "require-dev": {
         "drupal/core-dev": "^10.0",
+        "drupal/devel": "^5.1",
         "kint-php/kint": "^5.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpstan/extension-installer": "^1.2",

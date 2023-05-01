@@ -1,0 +1,6 @@
+services:
+  drupaleasy_notify.event_subscriber:
+    class: Drupal\drupaleasy_notify\EventSubscriber\DrupaleasyNotifySubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

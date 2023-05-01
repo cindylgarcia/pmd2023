@@ -1,0 +1,7 @@
+name: DrupalEasy Notify
+type: module
+description: Output a message to the screen when a repository is created, updated, or deleted.
+package: DrupalEasy
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:drupaleasy_repositories
