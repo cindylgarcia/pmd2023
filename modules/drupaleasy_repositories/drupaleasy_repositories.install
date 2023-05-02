@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for DrupalEasy Repositories module.
+ */
+
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Implements hook_uninstall().
+ */
+function drupaleasy_repositories_uninstall(): void {
+  FieldStorageConfig::loadByName('user', 'field_repository_url')->delete();
+  \Drupal::service('messenger')->addStatus('The Repository URL field on the user entity has been deleted.');
+}

@@ -1,0 +1,6 @@
+services:
+  drupaleasy_repositories.commands:
+    class: \Drupal\drupaleasy_repositories\Commands\DrupaleasyRepositoriesCommands
+    arguments: ['@drupaleasy_repositories.service', '@entity_type.manager', '@drupaleasy_repositories.batch']
+    tags:
+      - { name: drush.command }
