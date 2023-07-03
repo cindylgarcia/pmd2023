@@ -97,6 +97,7 @@ function _drupaleasy_repositories_user_form_submit(array $form, FormStateInterfa
 function drupaleasy_repositories_user_login(UserInterface $account): void {
   /** @var \Drupal\drupaleasy_repositories\DrupaleasyRepositoriesService $der */
   $der = \Drupal::service('drupaleasy_repositories.service');
+
   /** @var \Drupal\Core\Messenger\MessengerInterface $messenger */
   $messenger = \Drupal::service('messenger');
 
@@ -109,22 +110,21 @@ function drupaleasy_repositories_user_login(UserInterface $account): void {
  * Implements hook_cron().
  */
 function drupaleasy_repositories_cron(): void {
-  // Update repository nodes once per day, only between 1am and 2am UTC.
-  // Assume cron runs every hour.
-  // Gets the current GMT hour.
+  // Only update repository nodes once/day.
   $hour = (int) (time() / 3600) % 24;
-  // If ($hour == 1) {.
-  /** @var \Drupal\Core\Entity\EntityStorageInterface $user_storage */
-  $user_storage = \Drupal::service('entity_type.manager')->getStorage('user');
-  $query = $user_storage->getQuery();
-  $query->condition('status', '1');
-  $users = $query->accessCheck(FALSE)->execute();
+  // Assumes cron only runs once/hour.
+  // Gets the current GMT hour.
+  if ($hour == 1) {
+    /** @var \Drupal\Core\Entity\EntityStorageInterface $user_storage */
+    $user_storage = \Drupal::service('entity_type.manager')->getStorage('user');
+    $query = $user_storage->getQuery();
+    $query->condition('status', '1');
+    $users = $query->accessCheck(FALSE)->execute();
 
-  // Create a Queue API item for each user.
-  foreach ($users as $uid => $user) {
+    // Create a Queue API item for each user.
     $queue = \Drupal::queue('drupaleasy_repositories_repository_node_updater');
-    $queue->createItem(['uid' => $uid]);
+    foreach ($users as $uid => $user) {
+      $queue->createItem(['uid' => $uid]);
+    }
   }
 }
-
-// }

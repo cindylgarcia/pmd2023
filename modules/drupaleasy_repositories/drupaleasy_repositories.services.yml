@@ -5,7 +5,7 @@ services:
 
   drupaleasy_repositories.service:
     class: Drupal\drupaleasy_repositories\DrupaleasyRepositoriesService
-    arguments: ['@plugin.manager.drupaleasy_repositories', '@config.factory', '@entity_type.manager', '%drupaleasy_repositories.dry_run%', '@event_dispatcher']
+    arguments: ['@plugin.manager.drupaleasy_repositories', '@config.factory', '@entity_type.manager', '%drupaleasy_repositories.dry_run%', '@event_dispatcher', '@cache.data', '@datetime.time']
 
   drupaleasy_repositories.batch:
     class: Drupal\drupaleasy_repositories\DrupaleasyRepositoriesBatch

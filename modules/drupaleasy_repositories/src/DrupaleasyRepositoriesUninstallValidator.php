@@ -8,21 +8,20 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
 
 /**
- * Prevents book module from being uninstalled under certain conditions.
+ * Prevents DrupalEasy Repositories from being uninstalled if data exists.
  *
- * These conditions are when any book nodes exist or there are any book outline
- * stored.
+ * If any Repository URL field values exist, do not allow the module to be
+ * uninstalled.
  */
 class DrupaleasyRepositoriesUninstallValidator implements ModuleUninstallValidatorInterface {
-
   use StringTranslationTrait;
 
   /**
-   * Constructs a new DrupaleasyRepositoriesUninstallValidator object.
+   * Constructs a new DrupaleasyRepositoriesUninstallValidator.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
-   * @param \Drupal\Core\StringTranslation\TranslationInterface $stringTranslation
+   * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
    *   The string translation service.
    */
   public function __construct(protected EntityTypeManagerInterface $entityTypeManager, TranslationInterface $string_translation) {
@@ -34,11 +33,9 @@ class DrupaleasyRepositoriesUninstallValidator implements ModuleUninstallValidat
    */
   public function validate($module) {
     $reasons = [];
-    if ($module == 'book') {
+    if ($module == 'drupaleasy_repositories') {
       if ($this->hasRepositoryUrlData()) {
-        // The book node type is provided by the Book module. Prevent uninstall
-        // if there are any nodes of that type.
-        $reasons[] = $this->t('To uninstall Drupaleasy Repositories, delete all Repository URL values from user accounts.');
+        $reasons[] = $this->t('To uninstall DrupalEasy Repositories, delete all Repository URL values in user profiles.');
       }
     }
     return $reasons;
@@ -49,10 +46,6 @@ class DrupaleasyRepositoriesUninstallValidator implements ModuleUninstallValidat
    *
    * @return bool
    *   TRUE if there is Repository URL data, FALSE otherwise.
-   */
-
-  /**
-   *
    */
   protected function hasRepositoryUrlData() {
     $users = $this->entityTypeManager->getStorage('user')->getQuery()
