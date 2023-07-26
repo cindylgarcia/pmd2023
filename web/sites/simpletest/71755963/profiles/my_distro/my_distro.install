@@ -1,0 +1,1 @@
+<?php function my_distro_install() {\Drupal::entityTypeManager()->getStorage('path_alias')->create(['path' => '/user/1', 'alias' => '/root-user'])->save();}

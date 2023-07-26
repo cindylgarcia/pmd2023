@@ -1,0 +1,7 @@
+type: profile
+core_version_requirement: '*'
+name: 'distribution_one profile'
+distribution:
+  name: distribution_one
+  install:
+    theme: claro

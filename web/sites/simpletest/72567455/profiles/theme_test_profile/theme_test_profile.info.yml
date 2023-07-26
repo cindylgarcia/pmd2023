@@ -1,0 +1,5 @@
+type: profile
+core_version_requirement: '*'
+name: 'Theme test profile'
+themes:
+  - test_theme_updates

@@ -1,0 +1,4 @@
+<?php
+
+function config_profile_with_hook_install_install() {
+}

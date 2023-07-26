@@ -1,0 +1,11 @@
+msgid ""
+msgstr ""
+
+msgid "ABC Help Test module"
+msgstr "ABC-Hilfetestmodul"
+
+msgid "Test translation."
+msgstr "Übersetzung testen."
+
+msgid "Non-word-item to translate."
+msgstr "Non-word-german sdfwedrsdf."

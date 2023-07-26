@@ -1,0 +1,4 @@
+msgid ""
+msgstr ""
+msgid "Save and continue"
+msgstr "Enregistrer et continuer"

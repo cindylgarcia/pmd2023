@@ -1,0 +1,5 @@
+msgid ""
+msgstr ""
+
+msgid "Enter the password that accompanies your username."
+msgstr "Geben sie das Passwort für ihren Benutzernamen ein."

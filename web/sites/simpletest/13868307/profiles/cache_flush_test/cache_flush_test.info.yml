@@ -1,0 +1,5 @@
+type: profile
+core_version_requirement: '*'
+name: 'Cache flush test'
+install:
+  - language

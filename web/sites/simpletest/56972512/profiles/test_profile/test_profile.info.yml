@@ -1,0 +1,6 @@
+type: profile
+core_version_requirement: '*'
+name: 'Router testing profile'
+install:
+  - router_test
+  - router_installer_test

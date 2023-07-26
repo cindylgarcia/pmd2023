@@ -1,0 +1,7 @@
+type: profile
+core_version_requirement: '*'
+name: 'distribution_two profile'
+distribution:
+  name: distribution_two
+  install:
+    theme: claro

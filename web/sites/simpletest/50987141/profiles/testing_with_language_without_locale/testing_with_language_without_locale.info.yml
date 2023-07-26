@@ -1,0 +1,5 @@
+type: profile
+core_version_requirement: '*'
+name: 'Test with language but without locale'
+install:
+  - language

@@ -1,0 +1,5 @@
+msgid ""
+msgstr ""
+
+msgid "Save and continue"
+msgstr "Save and continue fr"

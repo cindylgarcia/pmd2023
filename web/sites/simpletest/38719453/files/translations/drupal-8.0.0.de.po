@@ -1,0 +1,15 @@
+msgid ""
+msgstr ""
+
+msgid "Save and continue"
+msgstr "Save and continue de"
+
+msgid "Anonymous"
+msgstr "Anonymous de"
+
+msgid "Language"
+msgstr "Language de"
+
+#: Testing site name configuration during the installer.
+msgid "Drupal"
+msgstr "Drupal"
