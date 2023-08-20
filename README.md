@@ -10,4 +10,4 @@ Several custom modules that take advantage of several of Drupal' APIs including 
 
 ## Tools Used In This Course
 
-PHP development tools such extensions for popular code editors and Xdebug. 
+PHP development tools extensions used in popular code editors and Xdebug. 
