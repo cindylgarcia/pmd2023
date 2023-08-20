@@ -8,6 +8,6 @@ In January 2023 I took the Professional Module Development Couse with Mike Anell
 
 Several custom modules that take advantage of several of Drupal' APIs including Plugins, Queue API, Batch API, Form API, Services, custom Drush commands, entity queries, event subscribers, and caching. Furthermore, the primary custom module will include both unit, kernel, and functional tests.
 
-## Tools Used In The Course To 
+## Tools Used In This Course
 
 PHP development tools such extensions for popular code editors and Xdebug. 
